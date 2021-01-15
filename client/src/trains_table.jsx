@@ -1,4 +1,4 @@
-import { Grid  } from '@material-ui/core';
+import { Button, Grid  } from '@material-ui/core';
 import React , { useEffect  } from 'react'
 import { withStyles,makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -9,6 +9,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import ButtonAppBar from './header';
 
 
 const StyledTableCell = withStyles((theme) => ({
@@ -37,6 +39,7 @@ const StyledTableCell = withStyles((theme) => ({
 
 function Trains() {
     const classes=useStyles();
+    const history=useHistory();
     const [trains_table,setTrains_table] = React.useState([]);
 
     useEffect(()=>{
@@ -49,9 +52,14 @@ function Trains() {
    console.log(error)
         })
       },[]);
+      const onclickinsertHandler=(e)=>{
+        history.push('/insertdeletetable')
+      }
     return (
         <Grid item container style={{marginTop:"20px"}}>    
-           
+          <Grid xs={12}>
+  <ButtonAppBar/>
+</Grid> 
         <TableContainer component={Paper}>
           <Table className={classes.table}>
             <TableHead style={{background:"#f0e9e9"}}>
@@ -87,6 +95,12 @@ function Trains() {
             </TableBody>
             </Table>
         </TableContainer>
+        <Grid>
+        <Button onClick={onclickinsertHandler} className={classes.button}>
+          Insert/Delete Trains
+        </Button>
+        </Grid>
+        
         </Grid>
         
     )

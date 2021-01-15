@@ -1,6 +1,7 @@
 import { Button, Grid, makeStyles } from '@material-ui/core';
 import React from 'react'
 import {useHistory} from 'react-router-dom';
+import Header from './header';
 import train from './train.jpg'
 
 
@@ -47,7 +48,16 @@ function Home() {
         history.push('/stationemployees')
     }
     return (
-       <Grid className={classes.img}>
+        <Grid container>
+            <Grid xs={12}>
+            <Header/>
+            </Grid>
+           
+           
+              
+         
+       <Grid xs={12} className={classes.img}>
+           
            <Grid container justify="center" xs={12} style={{paddingTop:"20px",paddingBottom:"20px"}}>
        <Button color="inherit" className={classes.button} style={{color:"white",border:"1px solid"}} onClick={clickontrainshandler}>trains</Button>
        <Button color="inherit" className={classes.button} style={{color:"white",border:"1px solid"}} onClick={clickonstationshandler}>stations</Button>
@@ -60,6 +70,7 @@ function Home() {
        <Button color="inherit" className={classes.button} style={{color:"white",border:"1px solid"}} onClick={clickontraintravelshandler}>Trains in Travel</Button>
            </Grid>
        </Grid> 
+       </Grid>
     )
 }
 

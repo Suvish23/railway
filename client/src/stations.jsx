@@ -1,4 +1,4 @@
-import { Grid  } from '@material-ui/core';
+import { Button, Grid  } from '@material-ui/core';
 import React , { useEffect  } from 'react'
 import { withStyles,makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -9,6 +9,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
+import {useHistory} from 'react-router-dom'
+import ButtonAppBar from './header';
 
 
 const StyledTableCell = withStyles((theme) => ({
@@ -37,6 +39,7 @@ const StyledTableCell = withStyles((theme) => ({
 
 function Stations() {
     const classes=useStyles();
+    const history=useHistory();
     const [stations,setStations] = React.useState([]);
 
     useEffect(()=>{
@@ -49,9 +52,14 @@ function Stations() {
    console.log(error)
         })
       },[]);
+      const onclickSubmithandler =()=>{
+        history.push('/insertstations')
+      }
     return (
         <Grid item container style={{marginTop:"20px"}}>    
-           
+           <Grid xs={12}>
+  <ButtonAppBar/>
+</Grid>
         <TableContainer component={Paper}>
           <Table className={classes.table}>
             <TableHead style={{background:"#f0e9e9"}}>
@@ -82,6 +90,9 @@ function Stations() {
             </TableBody>
             </Table>
         </TableContainer>
+        <Button onClick={onclickSubmithandler}>
+          ADD STATIONS
+        </Button>
         </Grid>
         
     )

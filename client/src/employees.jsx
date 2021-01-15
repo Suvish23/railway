@@ -9,6 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
+import ButtonAppBar from './header';
 
 
 const StyledTableCell = withStyles((theme) => ({
@@ -50,6 +51,12 @@ function Employees() {
         })
       },[]);
     return (
+      
+      <Grid container >
+<Grid xs={12}>
+  <ButtonAppBar/>
+</Grid>
+      
         <Grid item container style={{marginTop:"20px"}}>    
            
         <TableContainer component={Paper}>
@@ -90,6 +97,7 @@ function Employees() {
             </TableBody>
             </Table>
         </TableContainer>
+        </Grid>
         </Grid>
         
     )
